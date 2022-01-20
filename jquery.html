@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Demo</title>
+    <script src="js/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <script>
+
+     $(document).ready(function(){
+        $('a').click(function(event) {
+            alert('This link is no longer valid for today. Please try again tomorrow');
+            event.preventDefault();
+            $(this).addClass('font_bold');
+            $(this).hide('slow');
+            $(this).css("color:red")
+            if ($(this).hasClass('font-bold')) {
+                $(this).removeClass('font-bold')
+            }
+
+            $(this).toggleClass('font_bold');
+        });
+
+        $("p").on({
+          mouseenter: function(){
+            $(this).css("background-color", "lightgray");
+          },
+          mouseleave: function(){
+            $(this).css("background-color", "lightblue");
+          },
+          click: function(){
+            $(this).css("background-color", "yellow");
+          }
+        });
+
+        $("#oldbutton").click(function(){
+               $( "div" ).animate({
+                width: "70%",
+                opacity: 0.4,
+                marginLeft: "0.6in",
+                fontSize: "3em",
+                borderWidth: "10px"
+            }, 1500 );
+
+            $("#divid").text("We just changed the Div Text as demonstration");
+            alert(divtext)
+        }); 
+
+
+     });
+
+     function appendText() {
+      var txt1 = "<p>Text.</p>";               // Create element with HTML 
+
+      var txt2 = $("<p></p>").text("JQuery Text.");   // Create with jQuery
+
+      var txt3 = document.createElement("p");  // Create with DOM
+      txt3.innerHTML = "Text using innserHTML, Old Javascript way";
+
+      $("body").append(txt1, txt2, txt3);      // Append the new elements
+    }
+
+    </script>
+
+<div id="divid" name="divname" id="parent_id">This is my <b>Bold</b> div</div>
+    
+</div>
+<style>
+    .font_bold {
+        font-weight: bold;
+        color:crimson;
+    }
+    </style>
+
+</head>
+<body>
+    <a target="_blank" href="https://www.silicon.ac.in/">Silicon Institute of Technology</a>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+
+<button id="oldbutton" type="button">Check me out</button>
+
+<button id="appendtext" type="button" onclick="appendText()">Append Elements Demo</button>
+
+</body>
+</html>
